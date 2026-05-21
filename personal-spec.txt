@@ -1,0 +1,453 @@
+# Complete Spec Sheet — personal.html
+
+Everything needed to reproduce the personal pane, organized as design tokens
+first, then per-element specs.
+
+================================================================================
+1. DESIGN TOKENS
+================================================================================
+
+COLOR PALETTE (Personal)
+------------------------
+--p-bg          #f5eedc   Page background (warm cream)
+--p-bg-2        #efe5cc   Shelf gradient top
+--p-bg-3        #e9dcc0   Shelf gradient bottom, photo drop-shadow
+--p-paper       #faf4e3   Card / book-card / mindmap background
+--p-line        #d6c6a4   Borders, dashed rules
+--p-text        #3a322a   Primary body text
+--p-text-dim    #6e6253   Secondary / muted text
+--p-terra       #c7522a   Terracotta accent — eyebrows, links, drop cap
+--p-sage        #7c9070   Sage green accent
+--p-rose        #c98079   Rose accent
+--p-ochre       #d4a574   Ochre accent
+
+TYPOGRAPHY STACKS
+-----------------
+--f-p-display   "Instrument Serif", "Times New Roman", serif
+--f-p-body      "Fraunces", Georgia, serif
+--f-p-hand      "Caveat", cursive
+
+Google Fonts import (personal.html line 18):
+  Instrument Serif: ital@0;1
+  Fraunces: ital,opsz,wght@0,9..144,300..900;1,9..144,300..900
+  Caveat: wght@400;600
+
+LAYOUT
+------
+Page max-width:        1100px (.p-container)
+Side padding:          36px desktop, 22px ≤820px
+Section padding:       110px top / 60px bottom
+Body font-weight:      400 default
+
+
+================================================================================
+2. TOGGLE BUTTON (top-left, fixed)
+================================================================================
+
+Position:       fixed, top: 22px, left: 22px, z-index: 100
+Size:           54 × 54px
+Background:     var(--p-paper) #faf4e3
+Border:         1px dashed var(--p-terra), border-radius: 50%
+Color:          var(--p-terra) #c7522a
+Box-shadow:     0 4px 14px rgba(199, 82, 42, 0.12)
+Hover:          rotate(-8deg) translateY(-1px)
+                shadow → 0 6px 18px rgba(199, 82, 42, 0.22)
+Label (::after): Caveat, 18px, letter-spacing: 0.02em, fades in on hover
+SVG icon:       22 × 22px
+
+
+================================================================================
+3. BACKGROUND TEXTURE
+================================================================================
+
+Fixed-position SVG noise overlay
+  opacity: 0.55
+  mix-blend-mode: multiply
+  fractalNoise baseFrequency='0.85', 2 octaves
+  brown tint rgb(0.23, 0.2, 0.16) at alpha 0.08
+
+
+================================================================================
+4. TOP NAV (.p-nav)
+================================================================================
+
+Container:        position: sticky; top: 0; z-index: 50
+Background:       rgba(250, 244, 227, 0.88) with backdrop-filter: blur(8px)
+Border-bottom:    1px dashed var(--p-line)
+Inner padding:    14px 36px 14px 96px, gap: 6px 26px, justify-content: flex-end
+
+Link font:        Fraunces, italic, 16px
+Link color:       #6e6253 (active/hover: #c7522a)
+Link spacing:     letter-spacing: 0.01em, padding: 4px 2px
+
+Underline (::after):
+  SVG wavy underline #c7522a, stroke 1.6
+  background-size: 60px 4px
+  fades in translateY(2 → 0)
+
+Mobile (≤720px):
+  Padding 12px 18px 12px 72px, gap 4px 16px
+  Horizontal scroll, link font 14px
+
+
+================================================================================
+5. HERO (#hero)
+================================================================================
+
+CONTAINER
+  min-height: 100vh
+  padding: 100px 0 60px
+  display: flex; align-items: center
+  Inner grid: 360px 1fr, gap: 64px
+
+PORTRAIT PLACEHOLDER (.p-photo)
+  Size:           320 × 384px
+  Background:     var(--p-paper) #faf4e3
+  Border:         1px solid var(--p-line)
+  Border-radius:  8px
+  Box-shadow:     0 4px 0 #e9dcc0,
+                  0 16px 32px rgba(58,50,42,0.15),
+                  inset 0 0 0 8px #faf4e3,
+                  inset 0 0 0 9px #d6c6a4
+  Transform:      rotate(-2.5deg)
+  Text:           Caveat, 18px, color #6e6253
+  Flower (::after):
+    Content "✿", 32px, color #c7522a, rotate(15deg)
+    Positioned top: -14px; right: -10px
+
+HERO TEXT BLOCK
+  Element                  | Font                              | Size                       | Color    | Other
+  -------------------------|-----------------------------------|----------------------------|----------|-----------------------------------
+  Eyebrow                  | Caveat                            | 30px                       | #c7522a  | rotate(-1.5deg), mb 8px
+  H1 "Your Name."          | Instrument Serif italic, 400      | clamp(56px, 9vw, 120px)    | #3a322a  | lh 0.88, ls -0.02em, mb 22px
+  .amp (the period)        | Instrument Serif italic           | inherit                    | #c7522a  | —
+  Tagline                  | Instrument Serif italic           | clamp(22px, 2.4vw, 30px)   | #6e6253  | lh 1.3, mb 24px
+  Tag span 1 (Curious)     | —                                 | —                          | #7c9070  | —
+  Tag span 2 (Avid)        | —                                 | —                          | #c98079  | —
+  Tag span 3 (Lifelong)    | —                                 | —                          | #d4a574  | —
+  Bio                      | Fraunces 400                      | 18px                       | #6e6253  | lh 1.7, max-width 540px
+  Bio drop-cap             | Instrument Serif italic           | 3.2em (~58px)              | #c7522a  | float left, lh 0.85,
+                                                                                                          margin 6px 8px -4px 0
+
+
+================================================================================
+6. SECTION CHROME (shared by every .p-section block)
+================================================================================
+
+Section padding:    110px 0 60px
+
+Eyebrow (.p-section-eyebrow)
+  Caveat, 26px, color #c7522a
+  rotate(-2deg), margin-bottom 4px
+
+Title (.p-section-title)
+  Instrument Serif italic, clamp(40px, 6vw, 72px)
+  color #3a322a, letter-spacing -0.01em
+  line-height 1, margin-bottom 16px
+
+Subtitle (.page-subtitle)
+  Instrument Serif italic, 22px
+  color #6e6253, margin-top -8px
+
+Rule (.p-section-rule)
+  Width 100%, height 12px, margin 28px 0 44px
+  Wavy SVG stroke #c7522a width 1.5, opacity 0.7
+  background-size: 100px 12px
+
+
+================================================================================
+7. A DAY IN MY LIFE (#day)
+================================================================================
+
+CONTAINER
+  Grid, single column
+  Wavy vertical line at left: 100px, top: 20px → bottom: 20px
+  Width 2px, SVG wave #c7522a opacity 0.6
+  background-size: 2px 30px repeating-y
+
+EACH ITEM
+  Grid columns 90px 50px 1fr, gap 18px
+  Padding 14px 0, align-items: center
+  Time:         Instrument Serif italic, 22px, #c7522a, right-aligned
+  Icon circle:  36×36px, border-radius 50%, bg #faf4e3,
+                1.5px solid #c7522a, icon 16px, margin-left 7px
+  Text:         Fraunces, 17px, #3a322a, line-height 1.5
+  Text <em>:    color #6e6253, italic
+
+ICONS & TIMES (literal content)
+  Time      Icon  Text
+  --------  ----  ---------------------------------------------------------------
+  7:00 am   ☼     Morning run, then ten minutes of *journaling on the porch.*
+  8:30 am   ☕    Pour-over coffee, slow news, the day's intentions.
+  9:00 am   ✎     *Deep work block* — phone in a drawer, music in the headphones.
+  1:00 pm   ⌂     Cooking lunch from whatever's in the fridge.
+  3:00 pm   ✉     Meetings, messages, the social hours of the day.
+  6:00 pm   ❀     A long walk in the park, no podcasts, just *listening.*
+  8:00 pm   ♪     Cooking dinner with the record player on.
+  10:30 pm  ☾     A book in bed. Always paper, never a screen.
+
+Mobile (≤820px):
+  Grid 70px 40px 1fr, gap 10px
+  Time 16px, vertical line left: 80px
+
+
+================================================================================
+8. TRAVEL (#travel)
+================================================================================
+
+GRID
+  3 columns, gap: 32px
+  Odd cards rotate(-0.8deg), even rotate(0.6deg)
+  Card 1 margin-top: 18px; Card 3 margin-top: 36px
+
+IMAGE PLACEHOLDER
+  Height:         220px
+  Border-radius:  4px
+  Font:           Instrument Serif italic, 30px, rgba(255,255,255,0.95)
+  Box-shadow:     0 10px 24px rgba(58, 50, 42, 0.15)
+  Inner border (::after): inset: 8px, 1px solid rgba(255,255,255,0.35)
+
+CARD GRADIENTS
+  Card 1 (Lisbon):     linear-gradient(135deg, #c7522a, #d4a574)
+  Card 2 (Kyoto):      linear-gradient(135deg, #7c9070, #b5c4a2)
+  Card 3 (Patagonia):  linear-gradient(135deg, #c98079, #e0b5af)
+  Card 4 (spare):      linear-gradient(135deg, #6e6253, #a99880)
+
+STAMP (.p-travel-stamp)
+  56×56px circle, 1.5px dashed rgba(255,255,255,0.7)
+  Caveat, 14px, color rgba(255,255,255,0.95), line-height 1
+  rotate(-12deg), top:10px right:10px
+
+CAPTION
+  Location:    Instrument Serif italic, 22px, #3a322a
+  Year:        Caveat, 18px, #c7522a, margin-bottom 8px
+  Paragraph:   Fraunces, 15px, #6e6253, line-height 1.6
+  Read more:   Instrument Serif italic, 16px, #c7522a
+               border-bottom 1px solid #c7522a, padding-bottom 1px
+
+Mobile (≤820px):
+  grid-template-columns: 1fr
+  All rotations reset to 0, margin-tops cleared
+
+
+================================================================================
+9. FIELD NOTES (#notes)
+================================================================================
+
+LIST
+  display: grid; gap: 24px
+  Each .p-note: grid 60px 1fr auto, gap 24px
+  align-items: baseline, padding: 22px 0
+  border-bottom: 1px dashed #d6c6a4 (last child none)
+
+  Element                  | Spec
+  -------------------------|----------------------------------------------------
+  Number (01, 02…)         | Instrument Serif italic, 48px, #c7522a,
+                           | opacity 0.7, line-height 1
+  Title <h3>               | Instrument Serif italic, 400, 28px, #3a322a,
+                           | line-height 1.15, ls -0.01em, mb 6px
+  Meta (date · read time)  | Caveat, 18px, #6e6253, margin-bottom 8px
+  Meta <span> (read time)  | color #7c9070
+  Teaser                   | Fraunces (inherited), 16px, #6e6253, lh 1.5
+  Read → link              | Instrument Serif italic, 18px, #c7522a,
+                           | align-self: center, white-space: nowrap
+
+Mobile: grid collapses to single column, number shrinks to 36px.
+
+
+================================================================================
+10. QUOTES BAND (.p-quotes)
+================================================================================
+
+Section padding:     60px 0
+Each quote padding:  60px 36px
+Odd background:      rgba(124, 144, 112, 0.1)  (sage tint)
+Even background:     rgba(199, 82, 42, 0.06)   (terra tint)
+
+Big " (::before):
+  Instrument Serif italic, 180px, #c7522a opacity 0.18
+  line-height 0.6, top:30px left:36px
+
+Quote text:
+  Instrument Serif italic, clamp(24px, 3vw, 36px), #3a322a
+  line-height 1.35, letter-spacing -0.005em
+  max-width 780px, margin 0 auto 18px
+
+Attribution:
+  Caveat, 22px, #c7522a
+
+Content order: Yeats → Mary Oliver → Simone Weil → John Dewey.
+
+
+================================================================================
+11. READING LOG (#books)
+================================================================================
+
+SHELF WRAP
+  Background:     linear-gradient(180deg, #efe5cc, #e9dcc0)
+  Padding:        36px 28px 18px, border-radius 4px
+  Box-shadow:     inset 0 0 0 1px #d6c6a4, 0 6px 0 #d6c6a4
+
+SHELF
+  Flex, gap: 6px, align-items: flex-end, height 220px
+  Bottom edge: border-bottom 6px solid #8a6f4c
+  Drop-shadow: 0 4px 0 rgba(58,50,42,0.18)
+  Horizontal scroll allowed
+
+EACH BOOK SPINE
+  Width:           56px
+  Height:          100% (with per-child overrides below)
+  Border-radius:   2px 2px 0 0
+  Box-shadow:      inset -3px 0 6px rgba(0,0,0,0.2),
+                   inset 3px 0 0 rgba(255,255,255,0.08),
+                   0 -2px 0 rgba(0,0,0,0.15)
+  Padding:         16px 6px
+  Hover:           translateY(-12px) (240ms ease)
+  Title text:      Instrument Serif italic, 13px, rgba(255,255,255,0.95)
+                   writing-mode: vertical-rl, text-orientation: mixed
+                   transform: rotate(180deg), letter-spacing 0.02em
+
+PER-BOOK GRADIENT + HEIGHT
+  #  Title                  Gradient                  Height
+  -  ---------------------  ------------------------  ------
+  1  The Overstory          #c7522a → #a8431f         92%
+  2  A Field Guide          #7c9070 → #607057         100%
+  3  The Bezzle             #d4a574 → #b58a5a         88%
+  4  Bluets                 #6e6253 → #564c40         96%
+  5  Four Thousand Weeks    #c98079 → #a5635c         90%
+  6  The Power Broker       #3a322a → #2a241e         100%
+
+BOOK CARD (expands below shelf)
+  display: none until .active; then visible
+  margin-top 24px, padding 20px 24px, bg #faf4e3
+  1px solid #d6c6a4, border-radius 4px
+  Title <h4>:   Instrument Serif italic 400, 24px, #3a322a, mb 2px
+  Author:       Caveat, 20px, #c7522a, mb 8px
+  Reaction:     Fraunces italic, 16px, #6e6253, line-height 1.5
+
+BEHAVIOR
+  First book pre-selected on load.
+  Clicking same book again collapses the card.
+
+
+================================================================================
+12. MIND MAP (#mindmap)
+================================================================================
+
+WRAP
+  Height:         600px (420px ≤820px)
+  Background:     #faf4e3
+  Border:         1px solid #d6c6a4
+  Border-radius:  6px
+  Box-shadow:     0 12px 32px rgba(58,50,42,0.1)
+  Overflow:       hidden
+
+NODES (in JS)
+  Ring:       r=28, fill none, stroke = cluster color
+              opacity 0.25, width 1
+  Dot:        r=10, fill = cluster color, fill-opacity 0.85
+  Label:      Fraunces italic, 14px, color #3a322a
+              text-anchor middle, y=-22
+  Layout:     Circular, radius = 32% of min(width,height)
+              Offset multipliers: intellect 0.9, creative 1.05, lifestyle 0.85
+  Drift:      Per-node sine/cosine animation
+              driftR = 12 + random()*8
+              speed = 0.0006 + random()*0.0006
+
+CLUSTERS & COLORS
+  Cluster     Color     Nodes
+  ----------  -------   ----------------------------------------------------
+  intellect   #c7522a   Philosophy, AI, Books, Systems Thinking, Climate
+  creative    #7c9070   Design, Music, Writing
+  lifestyle   #d4a574   Travel, Cooking
+
+EDGES
+  SVG <line>, stroke #3a322a
+  stroke-opacity = 0.12 + weight × 0.05
+  stroke-width = weight, stroke-linecap: round
+
+  Edge list (a, b, weight):
+    phil-ai 2, phil-systems 3, phil-books 3, phil-writing 2,
+    ai-systems 3, ai-design 1,
+    design-writing 2, design-music 1,
+    travel-cooking 2, travel-writing 2, travel-climate 1,
+    books-writing 3, books-phil 2,
+    systems-climate 2, systems-cooking 1,
+    music-writing 2, music-cooking 1,
+    cooking-climate 1
+
+HOVER STATE (highlightNode)
+  Connected nodes:     ring opacity 0.7, dot opacity 1, full opacity
+  Disconnected nodes:  opacity 0.25
+  Connected edges:     stroke = origin cluster color, opacity 0.85
+  Disconnected edges:  opacity 0.05
+
+TOOLTIP
+  Background #3a322a, color #faf4e3
+  padding 10px 14px, border-radius 4px
+  Fraunces, 13px, line-height 1.4, max-width 220px
+  Auto-hides after 3500ms
+
+LEGEND
+  Position:    bottom: 16px; left: 16px
+  Background:  rgba(245, 238, 220, 0.7)
+  Padding:     8px 14px, border-radius 4px
+  Font:        Caveat, 18px, color #6e6253, gap 16px
+  Swatches:    12×12px circles in #c7522a, #7c9070, #d4a574
+
+
+================================================================================
+13. FOOTER
+================================================================================
+
+Padding:        60px 32px 40px
+Text-align:     center
+Border-top:     1px dashed #d6c6a4
+Font:           Caveat, 22px, color #6e6253
+Content:        "built with curiosity — your name, 2026"
+
+
+================================================================================
+14. ANIMATION & BEHAVIOR
+================================================================================
+
+FADE-IN ON SCROLL
+  Default: opacity 0, translateY(20px)
+  On .visible: opacity 1, translateY(0)
+  Transition: 700ms ease
+  IntersectionObserver threshold 0.12
+  rootMargin: '0px 0px -60px 0px'
+
+SMOOTH SCROLL
+  Anchor clicks scroll to target.top - navHeight - 8px.
+
+NAV ACTIVE STATE
+  IntersectionObserver with rootMargin: '-40% 0px -55% 0px'
+  toggles .active on nav links.
+
+REDUCED MOTION
+  All animations/transitions clamped to 0.001s
+  Mindmap drift halted
+  Pulse-ring and caret blink disabled
+
+FOCUS RINGS
+  outline: 2px solid currentColor
+  outline-offset: 3px
+  Personal mode overrides to #c7522a
+
+
+================================================================================
+15. RESPONSIVE BREAKPOINTS
+================================================================================
+
+≤820px
+  Container padding → 22px
+  Hero/travel grids collapse to single column with centered text
+  Travel rotations + offsets reset
+  Field notes collapse to single column, number → 36px
+  Day grid → 70px 40px 1fr, time → 16px, vertical rule → left: 80px
+  Mindmap height → 420px
+  Toggle hover label hidden
+
+≤720px
+  Nav becomes horizontally scrollable, links → 14px
