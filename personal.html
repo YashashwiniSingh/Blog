@@ -3,11 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Personal — Your Name</title>
+<title>Yashashwini Singh</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
 <style>
+/* Professional Mode Overrides */
+:root[data-mode="professional"] {
+  --p-bg:       #f1f5f9;
+  --p-bg-2:     #e2e8f0;
+  --p-bg-3:     #cbd5e1;
+  --p-paper:    #ffffff;
+  --p-line:     #94a3b8;
+  --p-text:     #0f172a;
+  --p-text-dim: #475569;
+  --p-terra:    #2563eb; /* Corporate Blue */
+  --p-sage:     #0d9488; /* Deep Teal */
+  --p-rose:     #64748b; /* Slate */
+  --p-ochre:    #4f46e5; /* Indigo */
+}
+
+/* Toggle Switch Styling */
+.mode-switch-wrap {
+  position: absolute;
+  left: 36px;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-p-hand);
+  font-size: 18px;
+  color: var(--p-text-dim);
+  z-index: 100;
+}
+.mode-toggle {
+  appearance: none;
+  width: 42px;
+  height: 22px;
+  background: var(--p-line);
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s;
+  outline: none;
+}
+.mode-toggle::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  background: var(--p-paper);
+  transition: transform 0.3s;
+}
+.mode-toggle:checked {
+  background: var(--p-terra);
+}
+.mode-toggle:checked::before {
+  transform: translateX(20px);
+}
+
 /* ===========================
    DESIGN TOKENS
 =========================== */
@@ -68,47 +125,6 @@ body::before {
 .p-section {
   padding: 110px 0 60px;
 }
-
-/* ===========================
-   TOGGLE BUTTON
-=========================== */
-.p-toggle {
-  position: fixed;
-  top: 22px;
-  left: 22px;
-  z-index: 100;
-  width: 54px;
-  height: 54px;
-  background: var(--p-paper);
-  border: 1px dashed var(--p-terra);
-  border-radius: 50%;
-  color: var(--p-terra);
-  box-shadow: 0 4px 14px rgba(199,82,42,0.12);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 240ms ease, box-shadow 240ms ease;
-}
-.p-toggle svg { width: 22px; height: 22px; }
-.p-toggle::after {
-  content: "switch";
-  font-family: var(--f-p-hand);
-  font-size: 18px;
-  letter-spacing: 0.02em;
-  color: var(--p-terra);
-  position: absolute;
-  left: 62px;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 200ms ease;
-}
-.p-toggle:hover {
-  transform: rotate(-8deg) translateY(-1px);
-  box-shadow: 0 6px 18px rgba(199,82,42,0.22);
-}
-.p-toggle:hover::after { opacity: 1; }
-.p-toggle:focus { outline: 2px solid var(--p-terra); outline-offset: 3px; }
 
 /* ===========================
    TOP NAV
@@ -213,9 +229,10 @@ body::before {
 /* .p-hero-text {} */
 .p-hero-eyebrow {
   font-family: var(--f-p-hand);
-  font-size: 30px;
+  font-size: 25px;
+  font-style: italic;
   color: var(--p-terra);
-  transform: rotate(-1.5deg);
+  transform: rotate(-1.3deg);
   display: inline-block;
   margin-bottom: 8px;
 }
@@ -354,91 +371,7 @@ body::before {
 /* ===========================
    TRAVEL
 =========================== */
-.p-travel-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-.p-travel-card:nth-child(odd)  { transform: rotate(-0.8deg); }
-.p-travel-card:nth-child(even) { transform: rotate(0.6deg); }
-.p-travel-card:nth-child(1) { margin-top: 18px; }
-.p-travel-card:nth-child(3) { margin-top: 36px; }
-
-.p-travel-img {
-  height: 220px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 10px 24px rgba(58,50,42,0.15);
-  margin-bottom: 16px;
-}
-.p-travel-img span {
-  font-family: var(--f-p-display);
-  font-style: italic;
-  font-size: 30px;
-  color: rgba(255,255,255,0.95);
-  z-index: 1;
-}
-.p-travel-img::after {
-  content: "";
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(255,255,255,0.35);
-  border-radius: 2px;
-}
-.p-travel-card:nth-child(1) .p-travel-img { background: linear-gradient(135deg, #c7522a, #d4a574); }
-.p-travel-card:nth-child(2) .p-travel-img { background: linear-gradient(135deg, #7c9070, #b5c4a2); }
-.p-travel-card:nth-child(3) .p-travel-img { background: linear-gradient(135deg, #c98079, #e0b5af); }
-
-.p-travel-stamp {
-  position: absolute;
-  top: 10px; right: 10px;
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(255,255,255,0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--f-p-hand);
-  font-size: 14px;
-  color: rgba(255,255,255,0.95);
-  line-height: 1;
-  text-align: center;
-  transform: rotate(-12deg);
-  z-index: 2;
-}
-
-.p-travel-year {
-  font-family: var(--f-p-hand);
-  font-size: 18px;
-  color: var(--p-terra);
-  margin-bottom: 8px;
-}
-.p-travel-location {
-  font-family: var(--f-p-display);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--p-text);
-  margin-bottom: 8px;
-}
-.p-travel-desc {
-  font-size: 15px;
-  color: var(--p-text-dim);
-  line-height: 1.6;
-  margin-bottom: 10px;
-}
-.p-travel-more {
-  font-family: var(--f-p-display);
-  font-style: italic;
-  font-size: 16px;
-  color: var(--p-terra);
-  text-decoration: none;
-  border-bottom: 1px solid var(--p-terra);
-  padding-bottom: 1px;
-}
+/* Travel styles removed and moved to travel-section.html */
 
 /* ===========================
    FIELD NOTES
@@ -593,6 +526,7 @@ body::before {
 .p-book:nth-child(4) { background: linear-gradient(180deg, #6e6253, #564c40); height: 96%; }
 .p-book:nth-child(5) { background: linear-gradient(180deg, #c98079, #a5635c); height: 90%; }
 .p-book:nth-child(6) { background: linear-gradient(180deg, #3a322a, #2a241e); height: 100%; }
+.p-book:nth-child(7) { background: linear-gradient(180deg, #8b4513, #654321); height: 85%; }
 
 .p-book-card {
   display: none;
@@ -648,7 +582,7 @@ body::before {
   gap: 16px;
   align-items: center;
   font-family: var(--f-p-hand);
-  font-size: 18px;
+  font-size: 15px;
   color: var(--p-text-dim);
   z-index: 10;
 }
@@ -683,8 +617,8 @@ body::before {
   text-align: center;
   border-top: 1px dashed var(--p-line);
   font-family: var(--f-p-hand);
-  font-size: 22px;
-  color: var(--p-text-dim);
+  font-size: 20px;
+  color: var(--p-terra);
 }
 
 /* ===========================
@@ -727,8 +661,7 @@ body::before {
   .p-hero-bio { margin: 0 auto; }
   .p-hero-bio::first-letter { float: none; margin: 0; }
 
-  .p-travel-grid { grid-template-columns: 1fr; }
-  .p-travel-card { transform: none !important; margin-top: 0 !important; }
+  /* Travel rules removed (moved to travel-section.html) */
 
   .p-note { grid-template-columns: 1fr; gap: 8px; }
   .p-note-num { font-size: 36px; }
@@ -739,8 +672,6 @@ body::before {
   .p-day-time { font-size: 16px; margin-left: -70px; }
 
   .p-mindmap-wrap { height: 420px; }
-
-  .p-toggle::after { display: none; }
 }
 
 /* ===========================
@@ -760,25 +691,20 @@ body::before {
 </head>
 <body>
 
-<!-- TOGGLE BUTTON -->
-<button class="p-toggle" aria-label="Switch view">
-  <svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-    <path d="M11 2a9 9 0 100 18A9 9 0 0011 2z"/>
-    <path d="M11 2c-2.5 3-4 5.5-4 9s1.5 6 4 9"/>
-    <path d="M11 2c2.5 3 4 5.5 4 9s-1.5 6-4 9"/>
-    <path d="M2 11h18"/>
-  </svg>
-</button>
-
 <!-- NAV -->
 <nav class="p-nav" id="p-nav">
+  <div class="mode-switch-wrap">
+    <span>Personal</span>
+    <input type="checkbox" id="modeToggle" class="mode-toggle">
+    <span>Professional</span>
+  </div>
   <div class="p-nav-inner">
     <a href="#hero">Home</a>
     <a href="#day">My Day</a>
-    <a href="#travel">Travel</a>
-    <a href="#notes">Notes</a>
-    <a href="#books">Reading</a>
     <a href="#mindmap">Mind Map</a>
+    <a href="#notes">Notes</a>   
+    <a href="#books">Reading</a>
+     
   </div>
 </nav>
 
@@ -788,19 +714,18 @@ body::before {
     <div class="p-hero-grid">
       <div>
         <div class="p-photo p-fade">
-          a photo of<br>you here
+          <img src="IMG_6776.jpeg" alt="Yashashwini Singh" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;">
         </div>
       </div>
       <div class="p-hero-text">
         <div class="p-hero-eyebrow p-fade">from the desk of,</div>
-        <h1 class="p-hero-name p-fade">Your Name<span class="amp">.</span></h1>
+        <h2 class="p-hero-name p-fade">Yashashwini Singh<span class="amp">.</span></h1>
         <p class="p-hero-tagline p-fade">
           <span class="t-sage">Curious</span> about everything.
-          <span class="t-rose">Avid</span> reader &amp; cook.
-          <span class="t-ochre">Lifelong</span> learner.
+          <span class="t-ochre">Intentional </span> &amp; <span class="t-rose">Audacious</span> in equal measure.
         </p>
         <p class="p-hero-bio p-fade">
-          Wandering through ideas at the intersection of technology, nature, and the quietly human. I build things, read widely, cook slowly, and believe the examined life is worth every detour.
+          Wandering through ideas at the intersection of technology, nature, and the quietly human. I build things, read widely, think deeply, and believe that life is worth every detour.
         </p>
       </div>
     </div>
@@ -819,89 +744,82 @@ body::before {
       <div class="p-day-item p-fade">
         <div class="p-day-time">7:00 am</div>
         <div class="p-day-icon">☼</div>
-        <div class="p-day-text">Morning run, then ten minutes of <em>journaling on the porch.</em></div>
+        <div class="p-day-text">Wake up, pick my <em>style</em> &amp; travel 45 minutes to work.</div>
       </div>
       <div class="p-day-item p-fade">
-        <div class="p-day-time">8:30 am</div>
+        <div class="p-day-time">8:45 am</div>
         <div class="p-day-icon">☕</div>
-        <div class="p-day-text">Pour-over coffee, slow news, the day's intentions.</div>
+        <div class="p-day-text"><em>Coffee, breakfast and a book</em>, plan the day's intentions, to do lists.</div>
       </div>
       <div class="p-day-item p-fade">
-        <div class="p-day-time">9:00 am</div>
+        <div class="p-day-time">9:45 am</div>
         <div class="p-day-icon">✎</div>
-        <div class="p-day-text"><em>Deep work block</em> — phone in a drawer, music in the headphones.</div>
+        <div class="p-day-text"><em>Deep work block</em> — phone in a drawer, music in the headphones &amp; <em>lots of notes</em></div>
       </div>
       <div class="p-day-item p-fade">
         <div class="p-day-time">1:00 pm</div>
         <div class="p-day-icon">⌂</div>
-        <div class="p-day-text">Cooking lunch from whatever's in the fridge.</div>
+        <div class="p-day-text">Lunch, sometimes with a book, sometimes with friends, <em>mostly with an ice cream</em>.</div>
       </div>
       <div class="p-day-item p-fade">
-        <div class="p-day-time">3:00 pm</div>
-        <div class="p-day-icon">✉</div>
-        <div class="p-day-text">Meetings, messages, the social hours of the day.</div>
+        <div class="p-day-time">2:00 pm</div>
+        <div class="p-day-icon">✎</div>
+        <div class="p-day-text"><em>Wrapping up</em>, pushing code, noting scope for optimisation.</div>
+      </div>
+      <div class="p-day-item p-fade">
+        <div class="p-day-time">3:30 pm</div>
+        <div class="p-day-icon">♪</div>
+        <div class="p-day-text">Travelling back home, with music, drowsy eyes &amp; <em>caffeinated chatter of the mind</em>.</div>
+      </div>
+      <div class="p-day-item p-fade">
+        <div class="p-day-time">4:45 pm</div>
+        <div class="p-day-icon">❀</div>
+        <div class="p-day-text">Talking to my <em>family</em>, unloading my day, listening to theirs.</div>
       </div>
       <div class="p-day-item p-fade">
         <div class="p-day-time">6:00 pm</div>
-        <div class="p-day-icon">❀</div>
-        <div class="p-day-text">A long walk in the park, no podcasts, just <em>listening.</em></div>
+        <div class="p-day-icon">✉</div>
+        <div class="p-day-text">Logging in back for work. Meetings, messages, the <em>social hours of the day</em>.</div>
       </div>
       <div class="p-day-item p-fade">
         <div class="p-day-time">8:00 pm</div>
-        <div class="p-day-icon">♪</div>
-        <div class="p-day-text">Cooking dinner with the record player on.</div>
+        <div class="p-day-icon">🏊</div>
+        <div class="p-day-text">A long swim, sometimes to relax, mostly to <em>push my limits</em>.</div>
       </div>
       <div class="p-day-item p-fade">
-        <div class="p-day-time">10:30 pm</div>
+        <div class="p-day-time">9:45 pm</div>
+        <div class="p-day-icon">⌂</div>
+        <div class="p-day-text">Dinner, followed by <em>doomscrolling</em> and finally talking to friends</div>
+      </div>
+      <div class="p-day-item p-fade">
+        <div class="p-day-time">11:30 pm</div>
         <div class="p-day-icon">☾</div>
-        <div class="p-day-text">A book in bed. Always paper, never a screen.</div>
+        <div class="p-day-text">A book in bed or journalling. <em>Always paper,</em> never a screen.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRAVEL -->
-<section id="travel" class="p-section">
+<!-- MIND MAP -->
+<section id="mindmap" class="p-section">
   <div class="p-container">
     <div class="p-fade">
-      <div class="p-section-eyebrow">places &amp; traces</div>
-      <h2 class="p-section-title">Travel</h2>
+      <div class="p-section-eyebrow">interests &amp; obsessions</div>
+      <h2 class="p-section-title">Mind Map</h2>
       <div class="p-section-rule"></div>
     </div>
-    <div class="p-travel-grid">
-      <div class="p-travel-card p-fade">
-        <div class="p-travel-img">
-          <div class="p-travel-stamp">Lisbon<br>2023</div>
-          <span>Lisbon</span>
-        </div>
-        <div class="p-travel-year">2023 · Portugal</div>
-        <div class="p-travel-location">Where the light is golden all day</div>
-        <p class="p-travel-desc">Spent two weeks eating pastéis de nata and getting deliberately lost in Alfama. Returned with sun on my shoulders and something rearranged inside.</p>
-        <a href="#" class="p-travel-more">Read more</a>
+    <div class="p-mindmap-wrap p-fade" id="p-mindmap">
+      <svg id="p-mindmap-svg" style="width:100%;height:100%;"></svg>
+      <div class="p-mindmap-legend">
+        <div><span class="p-swatch" style="background:#246800"></span>Intellect</div>
+        <div><span class="p-swatch" style="background:#723dc2"></span>Creative</div>
+        <div><span class="p-swatch" style="background:#e80f8a"></span>Lifestyle</div>
       </div>
-      <div class="p-travel-card p-fade">
-        <div class="p-travel-img">
-          <div class="p-travel-stamp">Kyoto<br>2022</div>
-          <span>Kyoto</span>
-        </div>
-        <div class="p-travel-year">2022 · Japan</div>
-        <div class="p-travel-location">Moss, silence, and cedar</div>
-        <p class="p-travel-desc">Three days at a small ryokan near Fushimi Inari. I woke at 5am each morning to walk the gates alone before the crowds arrived.</p>
-        <a href="#" class="p-travel-more">Read more</a>
-      </div>
-      <div class="p-travel-card p-fade">
-        <div class="p-travel-img">
-          <div class="p-travel-stamp">Patagonia<br>2021</div>
-          <span>Patagonia</span>
-        </div>
-        <div class="p-travel-year">2021 · Argentina</div>
-        <div class="p-travel-location">Wind so loud it becomes music</div>
-        <p class="p-travel-desc">El Chaltén, the trekking capital of the world. Eight days of wind, granite spires, and the particular joy of being very small in a very large landscape.</p>
-        <a href="#" class="p-travel-more">Read more</a>
-      </div>
+      <div class="p-mindmap-tooltip" id="p-tooltip"></div>
     </div>
   </div>
 </section>
+
 
 <!-- FIELD NOTES -->
 <section id="notes" class="p-section">
@@ -919,7 +837,7 @@ body::before {
           <div class="p-note-meta">March 12, 2026 · <span>6 min read</span></div>
           <p class="p-note-teaser">What happens when you remove the alarm, the phone, the urgency — and simply let the day begin at its own pace. An experiment in unscheduled time.</p>
         </div>
-        <a href="#" class="p-note-read">Read →</a>
+        <a href="read1.html" class="p-note-read">Read →</a>
       </div>
       <div class="p-note p-fade">
         <div class="p-note-num">02</div>
@@ -952,25 +870,7 @@ body::before {
   </div>
 </section>
 
-<!-- QUOTES BAND -->
-<div class="p-quotes p-fade">
-  <div class="p-quote">
-    <p class="p-quote-text">Do not wait to strike till the iron is hot, but make it hot by striking.</p>
-    <div class="p-quote-attr">— W.B. Yeats</div>
-  </div>
-  <div class="p-quote">
-    <p class="p-quote-text">Tell me, what is it you plan to do with your one wild and precious life?</p>
-    <div class="p-quote-attr">— Mary Oliver</div>
-  </div>
-  <div class="p-quote">
-    <p class="p-quote-text">Attention is the rarest and purest form of generosity.</p>
-    <div class="p-quote-attr">— Simone Weil</div>
-  </div>
-  <div class="p-quote">
-    <p class="p-quote-text">Education is not preparation for life; education is life itself.</p>
-    <div class="p-quote-attr">— John Dewey</div>
-  </div>
-</div>
+<!-- Travel section moved to travel-section.html -->
 
 <!-- READING LOG -->
 <section id="books" class="p-section">
@@ -982,12 +882,13 @@ body::before {
     </div>
     <div class="p-shelf-wrap p-fade">
       <div class="p-shelf" id="p-shelf">
-        <div class="p-book" data-index="0"><span>The Overstory</span></div>
-        <div class="p-book" data-index="1"><span>A Field Guide to Getting Lost</span></div>
-        <div class="p-book" data-index="2"><span>The Bezzle</span></div>
-        <div class="p-book" data-index="3"><span>Bluets</span></div>
-        <div class="p-book" data-index="4"><span>Four Thousand Weeks</span></div>
-        <div class="p-book" data-index="5"><span>The Power Broker</span></div>
+        <div class="p-book" data-index="0"><span>Anna Karenina</span></div>
+        <div class="p-book" data-index="1"><span>Near to the Wild Heart</span></div>
+        <div class="p-book" data-index="2"><span>Hour of the Star</span></div>
+        <div class="p-book" data-index="3"><span>1984</span></div>
+        <div class="p-book" data-index="4"><span>Brave New World</span></div>
+        <div class="p-book" data-index="5"><span>The Picture of Dorian Gray</span></div>
+        <div class="p-book" data-index="6"><span>The Eternal Husband</span></div>
       </div>
       <div class="p-book-card" id="p-book-card">
         <h4 id="bc-title"></h4>
@@ -998,29 +899,29 @@ body::before {
   </div>
 </section>
 
-<!-- MIND MAP -->
-<section id="mindmap" class="p-section">
-  <div class="p-container">
-    <div class="p-fade">
-      <div class="p-section-eyebrow">interests &amp; obsessions</div>
-      <h2 class="p-section-title">Mind Map</h2>
-      <div class="p-section-rule"></div>
-    </div>
-    <div class="p-mindmap-wrap p-fade" id="p-mindmap">
-      <svg id="p-mindmap-svg" style="width:100%;height:100%;"></svg>
-      <div class="p-mindmap-legend">
-        <div><span class="p-swatch" style="background:#c7522a"></span>Intellect</div>
-        <div><span class="p-swatch" style="background:#7c9070"></span>Creative</div>
-        <div><span class="p-swatch" style="background:#d4a574"></span>Lifestyle</div>
-      </div>
-      <div class="p-mindmap-tooltip" id="p-tooltip"></div>
-    </div>
+<!-- QUOTES BAND -->
+<div class="p-quotes p-fade">
+  <div class="p-quote">
+    <p class="p-quote-text">But I don't want comfort, I want god, I want poetry, I want real danger, I want freedom, I want goodness, I want sin.</p>
+    <div class="p-quote-attr">— Aldous Huxley</div>
   </div>
-</section>
+  <div class="p-quote">
+    <p class="p-quote-text">The wars will end &amp; the leaders will shake hands, &amp; that old woman will remain waiting for her martyred son, &amp; that girl will wait for her beloved husband. I do not know who sold the homeland but I know who paid the price.</p>
+    <div class="p-quote-attr">— Mahmoud Darwish</div>
+  </div>
+  <div class="p-quote">
+    <p class="p-quote-text">There are many things we would throw away if we were not afraid that others might pick it up.</p>
+    <div class="p-quote-attr">— Oscar Wilde</div>
+  </div>
+  <div class="p-quote">
+    <p class="p-quote-text">I am a series of small victories &amp; large defeats &amp; I am as amazed as any other that I have gotten from there to here.</p>
+    <div class="p-quote-attr">— Charles Bukowski</div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="p-footer">
-  built with curiosity — your name, 2026
+  built with love — yashi, 2026
 </footer>
 
 <script>
@@ -1029,34 +930,39 @@ body::before {
 ===================== */
 const books = [
   {
-    title: "The Overstory",
-    author: "Richard Powers",
-    reaction: "A novel that rewired how I see any tree I walk past. Epic, slow, and devastating in the best way. I think about the chestnut chapter at least once a week."
+    title: "Anna Karenina",
+    author: "Leo Tolstoy",
+    reaction: "I walked into it blind and it blew me away. Tolstoy's ability to be unbiased towards his characters and to capture the inner turmoil of life is commendable. A novel where each character is aware of the grief they are going to cause and they do it anyway."
   },
   {
-    title: "A Field Guide to Getting Lost",
-    author: "Rebecca Solnit",
-    reaction: "Essays on wandering, memory, and the color blue. Solnit writes like she's thinking out loud, and thinking has never felt more beautiful."
+    title: "Near to the wild heart",
+    author: "Clarice Lispector",
+    reaction: "A fever dream, the stream of subconciousness is captured in its raw and unedited form. Keeping a track of thoughts in a haywire mind is as difficult as calming the mind. It was unapologetic and truly unique, I have never read anything like it before."
   },
   {
-    title: "The Bezzle",
-    author: "Cory Doctorow",
-    reaction: "A propulsive, angry, funny novel about financial fraud and the systems that enable it. Doctorow at his most furious and most fun."
+    title: "Hour of the Star",
+    author: "Clarice Lispector",
+    reaction: "The ground reality of human lives in the world is captured in this novella. Not every human makes it big, but this book is proof that all stories are equally special. Dark, tragic and poetic."
   },
   {
-    title: "Bluets",
-    author: "Maggie Nelson",
-    reaction: "Two hundred and forty propositions about the color blue, grief, and desire. The strangest and most affecting book I've read in years."
+    title: "1984",
+    author: "George Orwell",
+    reaction: "I cannot apologise enough for how late I am to this. A very well deserved classic, it is written with clarity of mind and the ideas discussed is a sign of heightened awareness by the author. A realistic ending to a hopelessly unrealsitic world."
   },
   {
-    title: "Four Thousand Weeks",
-    author: "Oliver Burkeman",
-    reaction: "The anti-productivity productivity book. A genuine attempt to reckon with finitude rather than outrun it. Changed my relationship with my to-do list."
+    title: "Brave New World",
+    author: "Aldous Huxley",
+    reaction: "Bold for it's time and this is much closer to the real world than 1984. It also felt like reading the fantasy of a teenage boy but I cannot criticise that because seems like the world is being run by people with the same mentality."
   },
   {
-    title: "The Power Broker",
-    author: "Robert A. Caro",
-    reaction: "1,300 pages about Robert Moses and I would have read a thousand more. The greatest biography I've ever encountered. Power, infrastructure, and the city as battlefield."
+    title: "The Picture of Dorian Gray",
+    author: "Oscar Wilde",
+    reaction: "This has been the best book I have read in years, I have highlighted the entire book. The best example of dark satire, every character has a seductive charm which makes the reader's moral compass swirl in a frenzy. Easily my favorite book by a European author, the wit and the writing style is unmatched and it is a masterpiece in its own right."
+  },
+  {
+    title: "Eternal Husband",
+    author: "Fyodor Dostoevsky",
+    reaction: "Currently reading...."
   }
 ];
 
@@ -1095,33 +1001,32 @@ selectBook(0);
    MIND MAP
 ===================== */
 const clusters = {
-  intellect: { color: '#c7522a', nodes: ['Philosophy','AI','Books','Systems Thinking','Climate'] },
-  creative:  { color: '#7c9070', nodes: ['Design','Music','Writing'] },
-  lifestyle: { color: '#d4a574', nodes: ['Travel','Cooking'] }
+  intellect: { color: '#246800', nodes: ['Philosophy','Technology','Books'] },
+  creative:  { color: '#723dc2', nodes: ['Fashion','Music','Writing'] },
+  lifestyle: { color: '#e80f8a', nodes: ['Travel','Swimming', 'Badminton', 'Chess', 'Cycling'] }
 };
 
 const tooltips = {
   'Philosophy': 'From Stoicism to phenomenology — the questions that don\'t resolve.',
-  'AI': 'Watching this field transform in real time, with equal parts excitement and concern.',
-  'Books': 'Reading across history, fiction, science. Always three going at once.',
-  'Systems Thinking': 'How parts connect to wholes. Feedback loops everywhere.',
-  'Climate': 'The defining constraint of our century. Also a design problem.',
-  'Design': 'The invisible craft that shapes how we experience everything.',
-  'Music': 'Jazz, folk, ambient. The record player as ritual object.',
-  'Writing': 'The only way I actually understand what I think.',
+  'Technology': 'Watching this field transform in real time, with equal parts excitement and curiosity.',
+  'Books': 'Reading across classics, history, fiction, science. Always going at once.',
+  'Fashion': 'The craft that shapes how we are perceived. and what we stand for on the stage.',
+  'Music': 'Pop, Instrumental, Qawalli. The record player as ritual object.',
+  'Writing': 'The only way I actually understand what I think and to keep an honest document of life,',
   'Travel': 'Slow travel. Long stays. Getting to know a neighborhood.',
-  'Cooking': 'A daily practice, not a hobby. The dinner table as commons.'
+  'Swimming': 'An adult hobby that reminds me to keep pushing, all limits are created by the mind.',
+  'Badminton': 'A childhood passion, maybe in another universe we would be forever.',
+  'Chess': 'A love-hate relationship, mercurial wave of thrill, addiction and sorrow.',
+  'Cycling': 'Started as a habit, aspiring to stay consistent.'
 };
 
 const edges = [
-  {a:'Philosophy',b:'AI',w:2},{a:'Philosophy',b:'Systems Thinking',w:3},{a:'Philosophy',b:'Books',w:3},
-  {a:'Philosophy',b:'Writing',w:2},{a:'AI',b:'Systems Thinking',w:3},{a:'AI',b:'Design',w:1},
-  {a:'Design',b:'Writing',w:2},{a:'Design',b:'Music',w:1},
-  {a:'Travel',b:'Cooking',w:2},{a:'Travel',b:'Writing',w:2},{a:'Travel',b:'Climate',w:1},
-  {a:'Books',b:'Writing',w:3},{a:'Books',b:'Philosophy',w:2},
-  {a:'Systems Thinking',b:'Climate',w:2},{a:'Systems Thinking',b:'Cooking',w:1},
-  {a:'Music',b:'Writing',w:2},{a:'Music',b:'Cooking',w:1},
-  {a:'Cooking',b:'Climate',w:1}
+  {a:'Philosophy',b:'Technology',w:2},{a:'Philosophy',b:'Books',w:3},
+  {a:'Philosophy',b:'Writing',w:2},{a:'Technology',b:'Fashion',w:1},
+  {a:'Fashion',b:'Writing',w:2},{a:'Fashion',b:'Music',w:1},{a:'Travel',b:'Writing',w:2},
+  {a:'Books',b:'Writing',w:3},{a:'Books',b:'Philosophy',w:2},{a:'Music',b:'Writing',w:2},
+  {a:'Travel',b:'Swimming',w:1},{a:'Swimming',b:'Cycling',w:1},{a:'Swimming',b:'Badminton',w:1},
+  {a:'Cycling',b:'Badminton',w:1},{a:'Cycling',b:'Travel',w:2},{a:'Chess',b:'Writing',w:1},{a:'Chess',b:'Philosophy',w:1}
 ];
 
 const nodeCluster = {};
@@ -1147,11 +1052,11 @@ function buildMap() {
   const cx = W/2, cy = H/2;
   const R = Math.min(W,H) * 0.32;
 
-  const clusterMult = { intellect:0.9, creative:1.05, lifestyle:0.85 };
+  const clusterMult = { intellect:0.6, creative:1.05, lifestyle:1.2 };
 
   // Assign angular positions
   const total = allNodes.length;
-  const clusterAngles = { intellect:[], creative:[], lifestyle:[] };
+  const clusterAngles = { intellect:[], creative:[], lifestyle:[]};
   let base = 0;
   Object.entries(clusters).forEach(([cl, {nodes}]) => {
     const span = (nodes.length / total) * 2 * Math.PI;
@@ -1355,6 +1260,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     }
   });
 });
+
+/* =====================
+   MODE SWITCHER REDIRECT
+===================== */
+// const modeToggle = document.getElementById('modeToggle');
+// modeToggle.addEventListener('change', () => {
+//   if (modeToggle.checked) {
+//     // Replace with the link to your professional webpage
+//     window.location.href = 'professional.html'; 
+//   }
+// });
 
 /* =====================
    NAV ACTIVE STATE
