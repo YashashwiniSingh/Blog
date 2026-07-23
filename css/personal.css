@@ -672,8 +672,23 @@ body::before {
    RESPONSIVE — ≤720px
 =========================== */
 @media (max-width: 720px) {
+  .mode-switch-wrap {
+    position: static;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 18px 0;
+    flex-wrap: wrap;
+    font-size: 16px;
+  }
+
+  .p-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
   .p-nav-inner {
-    padding: 12px 18px 12px 72px;
+    padding: 8px 18px 12px;
     gap: 4px 16px;
     overflow-x: auto;
     flex-wrap: nowrap;

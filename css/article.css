@@ -106,8 +106,12 @@ body::before {
 .essay-content {
   font-size: 19px;
   color: var(--p-text-dim);
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.85;
+  hyphens: auto;
 }
-.essay-content p { margin-bottom: 28px; }
+.essay-content p { margin-bottom: 28px; text-align: justify; text-justify: inter-word; }
 .essay-content p:first-of-type::first-letter {
   font-family: var(--f-p-display);
   font-style: italic;
@@ -116,6 +120,28 @@ body::before {
   float: left;
   line-height: 0.85;
   margin: 6px 10px -4px 0;
+}
+.essay-talk {
+  margin-top: 48px;
+  padding: 24px 28px;
+  border: 1px dashed var(--p-line);
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 12px;
+}
+.essay-talk h2 {
+  font-family: var(--f-p-display);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--p-text);
+  margin-bottom: 10px;
+}
+.essay-talk p {
+  margin-bottom: 0;
+  font-size: 17px;
+}
+.essay-talk a {
+  color: var(--p-terra);
+  text-decoration: none;
 }
 .essay-content blockquote {
   font-family: var(--f-p-display);
