@@ -199,19 +199,6 @@
   .project-featured .project-content-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2.5rem; }
   .project-featured-meta-box { border-left: 1px solid var(--border); padding-left: 1.5rem; }
 
-  /* ======= ARCHITECTURE INSIGHTS MODULE ======= */
-  .blog-list { display: flex; flex-direction: column; }
-  .blog-item { display: grid; grid-template-columns: 80px 1fr auto; gap: 3rem; align-items: center; padding: 2rem 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: padding-left .25s ease; }
-  .blog-item:first-child { border-top: 1px solid var(--border); }
-  .blog-item:hover { padding-left: 1rem; background: linear-gradient(90deg, rgba(252, 174, 193, 0.01) 0%, transparent 100%); }
-  .blog-num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); }
-  .blog-title { font-family: var(--font-serif); font-size: 1.45rem; font-weight: 400; margin-bottom: .4rem; transition: color .2s; color: var(--text-primary); }
-  .blog-item:hover .blog-title { color: var(--accent); }
-  .blog-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); display: flex; gap: 1.5rem; }
-  .blog-right-area { display: flex; align-items: center; gap: 1.5rem; }
-  .blog-tag-pill { font-family: var(--font-mono); font-size: 0.65rem; padding: .3rem .8rem; border: 1px solid var(--border); color: var(--text-secondary); text-transform: uppercase; border-radius: 12px; }
-  .blog-arrow { font-size: 1.2rem; color: var(--text-muted); transition: transform .2s; }
-
   /* ======= MODERNIZED FOOTER ARTIFACTS ======= */
   footer { padding: 6rem 5% 4rem; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 4rem; }
   .footer-msg { font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; font-weight: 300; }
@@ -320,7 +307,6 @@
     <a href="#education">Education</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#blog">Articles</a>
   </div>
   
   <a href="mailto:yashi2015.bangalore@gmail.com" class="nav-cta">Get in touch</a>
@@ -333,18 +319,18 @@
   <div class="hero-left reveal">
     <div class="hero-tag">SWE @ Morgan Stanley</div>
     <h1 class="hero-name">Yashashwini<br><em>Singh.</em></h1>
-    <p class="hero-subtitle">Artificial Intelligence &amp; Data Technology · ML Research</p>
+    <p class="hero-subtitle">Artificial Intelligence &amp; Data Technology · Applied ML</p>
     <p class="hero-description">
-      Bridging the gap between competitive programming foundations and advanced practical machine learning systems. Architecting adaptive AutoML engines, real-time analytics optimizations, and scalable enterprise intelligence frameworks.
+      Bridging the gap between theoretical computational foundations and advanced practical machine learning systems. Architecting adaptive ML engines, real-time analytics optimizations, and scalable enterprise intelligence frameworks.
     </p>
     <div class="hero-actions">
-      <a href="#projects" class="btn-primary">View Research</a>
+      <a href="#projects" class="btn-primary">View Projects</a>
       <a href="#experience" class="btn-ghost">Experience Timeline</a>
     </div>
   </div>
   <div class="hero-right reveal">
     <div class="hero-portrait">
-      <div class="status-pill"><span class="status-dot"></span> Active Research</div>
+      <div class="status-pill"><span class="status-dot"></span> Research & Development</div>
       <img src="IMG_linkedin.png" alt="Yashashwini Singh Portfolio Headshot" class="portrait-img">
       <div class="av-rings">
         <div class="av-ring"></div>
@@ -460,7 +446,7 @@
       <div class="reveal">
         <div class="skill-category-title">Core Focus &amp; Problem Solving</div>
         <div class="skill-row">
-          <span class="skill-name">Automated ML (AutoML)</span>
+          <span class="skill-name">Machine Learning</span>
           <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:95%"></div></div>
           <span class="skill-pct">95%</span>
         </div>
@@ -474,17 +460,10 @@
           <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:94%"></div></div>
           <span class="skill-pct">94%</span>
         </div>
-        
-        <div style="margin-top:2rem; margin-bottom:2rem;" class="tools-grid">
-          <span class="tool-pill" style="border-color: var(--accent); color: var(--accent);">LeetCode (700+ solved, 1750 rating)</span>
-          <span class="tool-pill">HackerRank Problem Solving</span>
-          <span class="tool-pill">MySQL Certificate</span>
-        </div>
-
         <div class="skill-category-title" style="margin-top:2.5rem;">Languages &amp; Databases</div>
         <div class="tools-grid">
-          <span class="tool-pill">C++</span><span class="tool-pill">Python</span><span class="tool-pill">C</span><span class="tool-pill">Java</span><span class="tool-pill">R</span><span class="tool-pill">HTML/CSS</span><span class="tool-pill">JavaScript</span>
-          <span class="tool-pill">MySQL</span><span class="tool-pill">MongoDB</span><span class="tool-pill">DB2</span><span class="tool-pill">Neo4j</span><span class="tool-pill">ChromaDB</span><span class="tool-pill">Redis</span><span class="tool-pill">Cassandra</span>
+          <span class="tool-pill">C++</span><span class="tool-pill">Python</span><span class="tool-pill">C</span><span class="tool-pill">R</span><span class="tool-pill">HTML/CSS</span><span class="tool-pill">JavaScript</span>
+          <span class="tool-pill">MySQL</span><span class="tool-pill">MongoDB</span><span class="tool-pill">DB2</span><span class="tool-pill">Neo4j</span><span class="tool-pill">Redis</span>
         </div>
       </div>
       
@@ -502,7 +481,7 @@
         </div>
         
         <div style="margin-top:3.5rem; margin-bottom:2rem;" class="tools-grid">
-          <span class="tool-pill">Django</span><span class="tool-pill">Flask</span><span class="tool-pill">PyTorch</span><span class="tool-pill">TensorFlow</span><span class="tool-pill">XGBoost</span><span class="tool-pill">Jenkins CI/CD</span><span class="tool-pill">Docker</span><span class="tool-pill">Git</span><span class="tool-pill">Selenium</span><span class="tool-pill">LSTM Networks</span><span class="tool-pill">Fuzzy Matching</span>
+          <span class="tool-pill">Django</span><span class="tool-pill">Flask</span><span class="tool-pill">PyTorch</span><span class="tool-pill">TensorFlow</span><span class="tool-pill">Jenkins CI/CD</span><span class="tool-pill">Docker</span><span class="tool-pill">Git</span><span class="tool-pill">Selenium</span>
         </div>
 
         <div class="skill-category-title" style="margin-top:2.5rem;">Core Coursework Foundations</div>
@@ -518,7 +497,7 @@
   <div class="section-wrap">
     <div class="section-header reveal">
       <span class="section-num">04</span>
-      <h2 class="section-title">Selected Research &amp; Work</h2>
+      <h2 class="section-title">Selected Projects</h2>
       <div class="section-line"></div>
     </div>
     <div class="projects-grid">
@@ -528,15 +507,15 @@
           <div class="project-index">Smart India Hackathon · SIH-2023</div>
           <div class="project-content-grid">
             <div>
-              <h3 class="project-name">AI Powered Legal Assistant</h3>
-              <p class="project-desc">Developed an intelligent legal system leveraging advanced NLP techniques to categorize and recommend legal files based on deep similarity mappings. Implemented custom word embeddings and specialized document similarity matrices, yielding 90% accuracy in structuring complex text environments extracted via selenium and beautifulsoup web scrapers.</p>
+              <h3 class="project-name">Legal Assistant System</h3>
+              <p class="project-desc">Built a legal assistance system that suggests relevant legal templates based on client queries and retrieves similar case laws through a RAG-based pipeline. The solution combines semantic search, document understanding, and retrieval techniques to surface contextually relevant legal content for faster drafting and review.</p>
             </div>
             <div class="project-featured-meta-box">
               <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; margin-bottom:.5rem;">Architecture Highlights</div>
               <div style="font-size:0.85rem; color:var(--text-secondary); font-weight:300;">
-                · BERT &amp; TF-IDF Feature Extraction<br>
-                · Vector Embeddings &amp; Matrix Measures<br>
-                · Automated Complete Document Scraping
+                · RAG-Based Legal Retrieval<br>
+                · Similar Case Law Matching<br>
+                · Template Recommendation for Client Queries
               </div>
             </div>
           </div>
@@ -551,7 +530,7 @@
         <div class="project-header">
           <div class="project-index">02 · Optimization Systems</div>
           <h3 class="project-name">TourMate</h3>
-          <p class="project-desc">Programmed an end-to-end intelligent itinerary planning engine managing 75 core global tourist hubs. Integrated strict Graph Principles alongside clustering strategies to dynamically isolate and prioritize secondary waypoints within 20km blocks, mapping routes that saved users 25% in absolute trip traversal time.</p>
+          <p class="project-desc">Programmed an end-to-end intelligent itinerary planning engine integrating Hierarchical DB Scan concepts with graph-based planning to dynamically isolate and prioritize secondary waypoints, mapping routes that saved users time in trip traversal.</p>
         </div>
         <div class="project-footer">
           <div class="project-stack"><span>Python</span><span>MongoDB</span><span>TensorFlow</span><span>Maps API</span></div>
@@ -588,40 +567,6 @@
   </div>
 </section>
 
-<section id="blog">
-  <div class="section-wrap">
-    <div class="section-header reveal">
-      <span class="section-num">05</span>
-      <h2 class="section-title">Technical Writings</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="blog-list">
-      <a href="#" class="blog-item reveal">
-        <div class="blog-num">001</div>
-        <div>
-          <h3 class="blog-title">Handling Concept Drift gracefully across dynamic real-time data streaming architectures</h3>
-          <div class="blog-meta"><span>AI &amp; Technology</span><span>10 min read</span></div>
-        </div>
-        <div class="blog-right-area">
-          <span class="blog-tag-pill">Incremental Learning</span>
-          <span class="blog-arrow">→</span>
-        </div>
-      </a>
-      <a href="#" class="blog-item reveal">
-        <div class="blog-num">002</div>
-        <div>
-          <h3 class="blog-title">From 3 Minutes to 30 Seconds: Strategic refactoring metrics for massive scale enterprise datasets</h3>
-          <div class="blog-meta"><span>Data Systems</span><span>8 min read</span></div>
-        </div>
-        <div class="blog-right-area">
-          <span class="blog-tag-pill">Optimization</span>
-          <span class="blog-arrow">→</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
 <footer class="reveal">
   <div>
     <h2 class="footer-msg">Let's build something <em>intelligent</em> together.</h2>
@@ -636,7 +581,7 @@
 </footer>
 
 <div class="footer-bottom">
-  <div class="footer-copy">© 2026 Yashashwini Singh. All rights reserved.</div>
+  <div class="footer-copy">© 2026 Yashashwini Singh.</div>
   <div class="footer-built">Designed with love for engineering — Bengaluru</div>
 </div>
 
@@ -688,7 +633,7 @@
       if (!toggle.checked) {
         labelPersonal.classList.add('active');
         labelPro.classList.remove('active');
-        window.location.href = 'personal.html';
+        window.location.href = 'index.html';
       }
     });
   }

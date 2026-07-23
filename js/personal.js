@@ -100,12 +100,12 @@ const clusters = {
 };
 
 const tooltips = {
-  'Philosophy': 'From Stoicism to phenomenology — the questions that don\'t resolve.',
+  'Philosophy': 'From Stoicism to Vedanta — the questions that don\'t resolve.',
   'Technology': 'Watching this field transform in real time, with equal parts excitement and curiosity.',
   'Books': 'Reading across classics, history, fiction, science. Always going at once.',
   'Fashion': 'The craft that shapes how we are perceived. and what we stand for on the stage.',
-  'Music': 'Pop, Instrumental, Qawalli. The record player as ritual object.',
-  'Writing': 'The only way I actually understand what I think and to keep an honest document of life,',
+  'Music': 'Pop, Instrumental, Qawalli. Airpods and speakers as ritual objects.',
+  'Writing': 'The only way I actually understand what I think and to keep an honest document of life.',
   'Travel': 'Slow travel. Long stays. Getting to know a neighborhood.',
   'Swimming': 'An adult hobby that reminds me to keep pushing, all limits are created by the mind.',
   'Badminton': 'A childhood passion, maybe in another universe we would be forever.',

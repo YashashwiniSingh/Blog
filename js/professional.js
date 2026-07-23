@@ -54,7 +54,7 @@ if (toggle) {
     if (!toggle.checked) {
       labelPersonal.classList.add('active');
       labelPro.classList.remove('active');
-      window.location.href = 'personal.html';
+      window.location.href = 'index.html';
     }
   });
 }

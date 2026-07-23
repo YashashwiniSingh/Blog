@@ -122,26 +122,33 @@ body::before {
   margin: 6px 10px -4px 0;
 }
 .essay-talk {
-  margin-top: 48px;
-  padding: 24px 28px;
-  border: 1px dashed var(--p-line);
-  background: rgba(255, 255, 255, 0.24);
-  border-radius: 12px;
+  margin-top: 32px;
+  padding: 10px 0 0;
+  border-top: 1px dashed var(--p-line);
+  background: transparent;
+  border-radius: 0;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
 }
 .essay-talk h2 {
-  font-family: var(--f-p-display);
-  font-style: italic;
-  font-size: 28px;
-  color: var(--p-text);
-  margin-bottom: 10px;
+  font-family: var(--f-p-hand);
+  font-style: normal;
+  font-size: 14px;
+  color: var(--p-text-dim);
+  margin-bottom: 4px;
 }
 .essay-talk p {
   margin-bottom: 0;
-  font-size: 17px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--p-text-dim);
 }
 .essay-talk a {
   color: var(--p-terra);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: rgba(199, 82, 42, 0.35);
 }
 .essay-content blockquote {
   font-family: var(--f-p-display);
@@ -161,6 +168,10 @@ body::before {
   font-family: var(--f-p-hand);
   font-size: 20px;
   color: var(--p-terra);
+}
+.p-footer a {
+  color: inherit;
+  text-decoration: none;
 }
 
 @media (max-width: 720px) {

@@ -1,4 +1,4 @@
-# Complete Spec Sheet — personal.html
+# Complete Spec Sheet — index.html
 
 Everything needed to reproduce the personal pane, organized as design tokens
 first, then per-element specs.
@@ -27,7 +27,7 @@ TYPOGRAPHY STACKS
 --f-p-body      "Fraunces", Georgia, serif
 --f-p-hand      "Caveat", cursive
 
-Google Fonts import (personal.html line 18):
+Google Fonts import (index.html line 18):
   Instrument Serif: ital@0;1
   Fraunces: ital,opsz,wght@0,9..144,300..900;1,9..144,300..900
   Caveat: wght@400;600
